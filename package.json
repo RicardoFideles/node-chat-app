@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && nyc mocha server --recursive"
   },
   "engine": {
     "node": "8.1.3"
@@ -13,6 +13,51 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.3"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.29",
+    "mongoose": "^4.11.1",
+    "sinon-mongoose": "^2.0.2",
+    "validator": "^8.0.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "chai": "^4.0.2",
+    "expect": "^1.20.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "mocha-simple-html-reporter": "^1.0.1",
+    "nyc": "^11.0.3",
+    "rewire": "^2.5.2",
+    "sinon": "^2.3.5",
+    "superagent-mocker": "^0.5.2",
+    "supertest": "^3.0.0"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 60,
+    "statements": 0,
+    "functions": 0,
+    "branches": 0,
+    "include": [
+      "server/**/*.js"
+    ],
+    "exclude": [
+      "server/test/**/*.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "cache": false,
+    "all": true
   }
 }
