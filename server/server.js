@@ -12,6 +12,9 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 
+var {generateMessage} = require('./utils/message');
+
+
 app.use(bodyParser.json());
 app.use(express.static(publicPath));
 
@@ -21,23 +24,12 @@ io.on('connection', (socket) => {
     socket.on('createMessage', (message) => {
         console.log('createMessage', message);
 
-        socket.emit('newMessage',{
-            from : 'Admin',
-            message : message.text,
-            createAt : 'Welcome to the chat app'
-        });
+        socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
 
-        socket.brodcast.emit('newMessage',{
-            from : 'Admin',
-            message : message.text,
-            createAt : 'New user joined'
-        });
+        socket.brodcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
 
-        io.emit('newMessage', {
-            from : message.from,
-            message : message.text,
-            createAt : new Date().getTime()
-        });
+        io.emit('newMessage', generateMessage(message.from, message.text));
+    
         // socket.brodcast.emit('newMessage',{
         //     from : message.from,
         //     message : message.text,
