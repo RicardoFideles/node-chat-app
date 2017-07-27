@@ -60,5 +60,4 @@ locationButton.on('click', function(){
         locationButton.removeAttr('disabled');
         alert('Unable to fetch location.');
     });
-
 });
