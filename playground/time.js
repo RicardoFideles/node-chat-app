@@ -16,3 +16,13 @@ console.log(date.format('dddd, MMMM Do YYYY, h:mm:ss a'));
 date.subtract(6, 'hours');
 console.log(date.format('h:mm a'));
 console.log(date.format('hh:mm a'));
+
+var createdAt = 1234;
+date = moment(createdAt);
+console.log(date.format('dddd, MMMM Do YYYY, h:mm:ss a'));
+
+var someTimeStamp = moment().valueOf();
+console.log(someTimeStamp);
+
+
+
