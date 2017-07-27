@@ -21,7 +21,7 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
     console.log('new user connect');
 
-    socket.emit('newMessage', generateMessage('Admin', 'Bem vindo ao chat app on Heroku'));
+    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app on Heroku'));
 
     socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
 
