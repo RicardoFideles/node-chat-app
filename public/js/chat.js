@@ -70,15 +70,13 @@ socket.on('newLocationMessage', (message) => {
 });
 
 jQuery('#message-form').on('submit', function (e) {
-    e.preventDefault;
-        socket.emit('createMessage', {
-        from : 'User',
+    e.preventDefault();
+    socket.emit('createMessage', {
         text : jQuery('[name=message]').val()
     }, function () {
         jQuery('[name=message]').val('');
     });
 
-    return false;
 });
 
 var locationButton = jQuery('#send-location');
